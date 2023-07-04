@@ -1,0 +1,90 @@
+﻿@model Dictionary<Doctor, Clinic>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Star rating using pure CSS</title>
+    
+
+
+</head>
+
+<body>
+    <!-- Latest property -->
+    <section id="aa-latest-property">
+        <div class="container">
+            <div class="aa-latest-property-area">
+                <div class="aa-title">
+                    <h2>Latest Doctors</h2>
+                    <span>
+                    </span>
+                    <p>
+                        In our community, we are grateful for the exceptional doctors whose top-notch skills, compassion, expertise, and empathy make a real difference in patients' lives, providing exceptional care that positively impacts our health.
+                    </p>
+
+                </div>
+                <div class="aa-latest-properties-content">
+                    <div class="row">
+                        @foreach (var doctor in Model)
+                        {
+
+                            <div class="col-md-4">
+                                <article class="aa-properties-item">
+
+                                    <a href="#" class="aa-properties-item-img">
+                                        <img src="~/uploads/@doctor.Key.Doctor_ImageProfile" alt="img">
+                                    </a>
+
+                                    @if (doctor.Key.Doctor_AppointmentType.Equals(ClinicProject.Data.Enum.AppointmentType.Urgent))
+                                    {
+                                        <div class="aa-tag sold-out">
+                                            @doctor.Key.Doctor_AppointmentType
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="aa-tag for-sale">
+                                            @doctor.Key.Doctor_AppointmentType
+                                        </div>
+                                    }
+
+                                    <div class="aa-properties-item-content">
+                                        <div class="aa-properties-info">
+                                            <span>@doctor.Key.Doctor_Specialization</span>
+
+                                        </div>
+                                        <div class="aa-properties-about">
+                                            <h3><a href="#">Dr:@doctor.Key.Doctor_FirstName @doctor.Key.Doctor_LastName </a></h3>
+                                            <h4> @doctor.Value.ClinicRate stars</h4>
+                                        </div>
+                                        <div class="aa-properties-detial">
+                                            <span class="aa-price">
+                                                @doctor.Value.clinc_Price JD
+                                            </span>
+                                            <a asp-action="DetailsOfDoctor" asp-controller="Home" asp-route-id="@doctor.Key.DoctorId" class="aa-secondary-btn">View Details</a>
+                                        </div>
+
+                                      
+                                </article>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Latest property -->
+</body>
+
+</html>
+
+
+

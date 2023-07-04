@@ -1,0 +1,62 @@
+﻿@model Clinic
+
+@{
+    ViewData["Title"] = "EditClinic";
+    Layout = "~/Views/Shared/Doctor_Layout/_Layout_Doctor.cshtml";
+}
+<div class="card-body">
+<form asp-action="EditClinic" method="post">
+    @Html.HiddenFor(x=>x.ClinicId)
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<h2 class="heading-small text-muted mb-4">Clinic information</h2>
+<div class="pl-lg-4">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label asp-for="@Model.Clinic_Name" class="control-label"></label>
+                <input asp-for="@Model.Clinic_Name" class="form-control" value="@Model.Clinic_Name"  />
+            </div>
+        </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Clinc_Description" class="control-label"></label>
+                    <input asp-for="@Model.Clinc_Description" class="form-control" value="@Model.Clinc_Description" />
+                </div>
+            </div>
+    </div>
+    <div class="row">
+        
+
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label asp-for="@Model.clinc_Price" class="control-label"></label>
+                <input asp-for="@Model.clinc_Price" class="form-control" value="@Model.clinc_Price"  />
+            </div>
+        </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Clinic_Location" class="control-label"></label>
+                    <select asp-for="Clinic_Location">
+
+                        @if (ViewBag.location != null)
+                        {
+                            <option disabled selected>Select loaction</option>
+                            foreach (var G in ViewBag.location)
+                            {
+                                <option value="@G">@G</option>
+                            }
+                        }
+                    </select>
+                </div>
+                </div>
+                <br/>
+                <div class="col-lg-6">
+                    <div class="form-group">
+            <input type="submit" value="save" class="btn btn-info" style="margin-right:250px;" />
+            </div>
+            </div>
+
+    </div>
+</div>
+</form></div>

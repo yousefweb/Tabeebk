@@ -1,0 +1,105 @@
+﻿@model Dictionary<Dictionary<Reservation, Patient>, List<ClinicDay>>
+
+@{
+    ViewData["Title"] = "ClinicAppointmentTimes";
+    Layout = "~/Views/Shared/Doctor_Layout/_Layout_Doctor.cshtml";
+}
+
+<h2>Clinic Reservation</h2>
+
+<div class="form-group">
+    @Html.Label("Select Clinic Day:")
+    @Html.DropDownList("clinicDayId", Model.First().Value != null ? new SelectList(Model.First().Value, "ClinicDayId", "DayOfWeek") : Enumerable.Empty<SelectListItem>(), "Select a day", new { @class = "form-control", id = "clinicDayDropdown" })
+
+</div>
+
+@if(Model !=null)
+{
+    @foreach (var clinicDaysDictionary in Model)
+    {
+        var patientReservationDictionary = clinicDaysDictionary.Key;
+        var clinicDays = clinicDaysDictionary.Value;
+
+
+        if (patientReservationDictionary != null && clinicDays != null)
+        {
+            @foreach (var clinicDay in clinicDays)
+            {
+
+                var reservations = patientReservationDictionary.Keys.ToList();
+
+                <div id="clinicDayTable_@clinicDay.ClinicDayId" class="clinic-day-table" style="display: none;">
+                    <h3>Reservations for @clinicDay.DayOfWeek</h3>
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Patient Name</th>
+                                <th>Start Reservation</th>
+                                <th>End Reservation</th>
+                                <th>Reservation Day</th>
+                                <th>Situation</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var reservation in reservations)
+                            {
+                                if (reservation.Reservation_Day == clinicDay.DayOfWeek)
+                                {
+                                    var patient = patientReservationDictionary[reservation];
+
+                                    <tr>
+                                        <td>@patient.Patient_UserName</td>
+                                        <td>@reservation.Strat_reservation</td>
+                                        <td>@reservation.End_reservation</td>
+                                        <td>@reservation.Reservation_Day</td>
+                                        <td>@reservation.situationOfReservation</td>
+                                        <td>
+
+                                                <form action="" method="post">
+                                                    <input type="hidden" name="reservationId" value="@reservation.ReservationId" />
+                                                    <button type="submit" asp-action="RemoveTheReservation" asp-controller="Clinic" style="color: red;">Remove</button>
+                                                </form>
+
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        }
+       
+    }
+
+}
+
+
+<script>
+
+    // Show all tables initially
+    var allTables = document.getElementsByClassName("clinic-day-table");
+    for (var i = 0; i < allTables.length; i++) {
+        allTables[i].style.display = "block";
+    }
+
+    document.getElementById("clinicDayDropdown").addEventListener("change", function () 
+    {
+        var selectedDayId = this.value;
+        var allTables = document.getElementsByClassName("clinic-day-table");
+
+        for (var i = 0; i < allTables.length; i++)
+        {
+            if (allTables[i].id === "clinicDayTable_" + selectedDayId)
+            {
+                allTables[i].style.display = "block";
+            }
+
+            else
+            {
+                allTables[i].style.display = "none";
+            }
+        }
+    });
+</script>

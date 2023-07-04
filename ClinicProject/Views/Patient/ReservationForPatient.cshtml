@@ -1,0 +1,125 @@
+﻿@model Dictionary<Reservation,(Doctor,Clinic)>
+
+@{
+    ViewData["Title"] = "ReservationForPatient";
+    Layout = "~/Views/Shared/LogIn_Layout/_Layout_Login.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ReservationForPatient</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(45deg, #49a09d, #5f2c82);
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+        }
+
+        table {
+            width: 1300px;
+            border-collapse: collapse;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        th,
+        td {
+            padding: 15px;
+            background-color: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        thead th {
+            background-color: #55608f;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        tbody td {
+            position: relative;
+        }
+
+            tbody td:hover:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: -9999px;
+                bottom: -9999px;
+                background-color: rgba(255,255,255,0.2);
+                z-index: -1;
+            }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Doctor name</th>
+                    <th>Day</th>
+                    <th>Start time</th>
+                    <th>End time</th>
+                    <th>Clinic name</th>
+                    <th>Location</th>
+                    <th>Specialization</th>
+                    <th>Contact</th>
+                    <th>Cancel Reservation</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>@item.Value.Item1.Doctor_FirstName @item.Value.Item1.Doctor_LastName</td>
+                        <td>@item.Key.Reservation_Day</td>
+                        <td>@item.Key.Strat_reservation</td>
+                        <td>@item.Key.End_reservation</td>
+                        <td>@item.Value.Item2.Clinic_Name</td>
+                        <td>@item.Value.Item2.Clinic_Location</td>
+
+                        <td>@item.Value.Item1.Doctor_Specialization</td>
+                        <td><a asp-action="PatientContactDoctor" class="btn btn-primary">Send message</a></td>
+                        <td>
+
+                            @if (((item.Key.Strat_reservation - DateTime.Now).TotalHours > 12))
+                            {
+                                <a asp-action="PatientCancelHisReservation" asp-controller="Clinic" asp-route-id="@item.Key.ReservationId" class="btn btn-danger">Cancel Reservation</a>
+                            }
+
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            }
+        </table>
+    </div>
+
+
+
+</body>
+</html>

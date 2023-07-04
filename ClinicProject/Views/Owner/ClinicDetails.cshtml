@@ -1,0 +1,56 @@
+﻿@model ClinicProject.Models.Clinic
+
+@{
+    Layout = "~/Views/Shared/_Layout_Owner.cshtml";
+    ViewData["Title"] = "ClinicDetails";
+}
+
+<h2>Clinic Details</h2>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/ClinicCss/ClinicDetaills.css"/>
+
+</head>
+<body>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+
+            
+
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Clinic_Name)</td>
+                    <td>@Html.DisplayFor(model => model.Clinic_Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.ClinicRate)</td>
+                    <td>@Html.DisplayFor(model => model.ClinicRate)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.clinc_Price)</td>
+                    <td>@Html.DisplayFor(model => model.clinc_Price)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Clinic_Location)</td>
+                    <td>@Html.DisplayFor(model => model.Clinic_Location)</td>
+                </tr>
+                
+
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Clinc_Description)</td>
+                    <td>@Html.DisplayFor(model => model.Clinc_Description)</td>
+                </tr>
+
+            
+        </table>
+        <a asp-action="AllClinics" class="btn btn-outline-dark">Back</a>
+    </div>
+</body>
+</html>
+

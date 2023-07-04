@@ -1,0 +1,198 @@
+﻿@model ClinicProject.Models.Patient
+@{
+    ViewData["Title"] = "profile";
+    Layout = "~/Views/Shared/PatientProfile_Layout/_Layout_PatientProfile.cshtml";
+}
+
+
+<div class="main-content">
+    <!-- Top navbar -->
+@*    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+        <div class="container-fluid">
+
+            <!-- Form -->
+            <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+                <div class="form-group mb-0">
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+            <!-- User -->
+            <ul class="navbar-nav align-items-center d-none d-md-flex">
+                <li class="nav-item dropdown">
+
+                    @* <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                    <div class=" dropdown-header noti-title">
+                    <h6 class="text-overflow m-0">Welcome!</h6>
+                    </div>
+                    <a href="~/examples/profile.html" class="dropdown-item">
+                    <i class="ni ni-single-02"></i>
+                    <span>My profile</span>
+                    </a>
+                    <a href="~/examples/profile.html" class="dropdown-item">
+                    <i class="ni ni-settings-gear-65"></i>
+                    <span>Edit Profile</span>
+                    </a>
+                    <a href="~/examples/profile.html" class="dropdown-item">
+                    <i class="ni ni-calendar-grid-58"></i>
+                    <span>Activity</span>
+                    </a>
+                    <a href="~/examples/profile.html" class="dropdown-item">
+                    <i class="ni ni-support-16"></i>
+                    <span>Support</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#!" class="dropdown-item">
+                    <i class="ni ni-user-run"></i>
+                    <span>Logout</span>
+                    </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+*@    <!-- Page content -->
+    <div class="container-fluid mt--7" style="margin-top: 200px;">
+        <div class="row">
+            
+            <div class="col-xl-8 order-xl-1">
+                <div class="card bg-secondary shadow">
+                    <div class="card-header bg-white border-0">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h3 class="mb-0">My account</h3>
+                            </div>
+                            <div class="col-4 text-right">
+                                <a asp-action="EditProfileP" asp-route-id="@Model.PatientId" class="btn btn-info" style="margin-right:250px;"> Edit profile</a>
+                                <a asp-route-id="@Model.PatientId" asp-action="ReservationForPatient" asp-controller="Patient" as class="btn btn-info" style="margin-right:300px;">My Reservations</a>
+                                <a asp-route-id="@Model.PatientId" asp-action="OldReservationForPatient" asp-controller="Patient" as class="btn btn-info" style="margin-right:300px;">My Old Reservations</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="RegisterPatient">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <h6 class="heading-small text-muted mb-4">User information</h6>
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Patient_UserName" class="control-label"></label>
+                                            <input asp-for="Patient_UserName" class="form-control" value="@Model.Patient_UserName" readonly />
+                                            <span asp-validation-for="Patient_UserName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Patient_Email" class="control-label"></label>
+                                            <input asp-for="Patient_Email" class="form-control" value="@Model.Patient_Email" readonly />
+                                            <span asp-validation-for="Patient_Email" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Patient_FirstName" class="control-label"></label>
+                                            <input asp-for="Patient_FirstName" class="form-control" value="@Model.Patient_FirstName" readonly />
+                                            <span asp-validation-for="Patient_FirstName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Patient_LastName" class="control-label"></label>
+                                            <input asp-for="Patient_LastName" class="form-control" value="@Model.Patient_LastName" readonly />
+                                            <span asp-validation-for="Patient_LastName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Patient_Age" class="control-label"></label>
+                                            <input asp-for="Patient_Age" class="form-control" value="@Model.Patient_Age" readonly />
+                                            <span asp-validation-for="Patient_Age" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Patient_PhoneNumber" class="control-label"></label>
+                                            <input asp-for="Patient_PhoneNumber" class="form-control" value="@Model.Patient_PhoneNumber" readonly />
+                                            <span asp-validation-for="Patient_PhoneNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+
+                                    <div class="row" style="place-content:center">
+                                        <div class="col-lg-3">
+                                            <div class="form-group text-center">
+                                                <label asp-for="Patient_Gender" class="control-label"></label>
+                                                <input asp-for="Patient_Gender" class="form-control" value="@Model.Patient_Gender" readonly />
+                                                <span asp-validation-for="Patient_Gender" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="place-content:center">
+                                        <div class="col-lg-3">
+                                            <div class="form-group text-center">
+                                                <label asp-for="Amount" class="control-label"></label>
+                                                <input asp-for="Amount" class="form-control" value="@Model.Amount" readonly />
+                                                <span asp-validation-for="Amount" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
+
+
+
+                            </div>
+                            <hr class="my-4">
+                            <!-- Location -->
+                            <h6 class="heading-small text-muted mb-4">Location Information</h6>
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Patient_Location" class="control-label"></label>
+                                            <input asp-for="Patient_Location" class="form-control" value="@Model.Patient_Location" readonly />
+                                            <span asp-validation-for="Patient_Location" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6" style="float:right">
+                                        <div class="form-group focused" style="float: right;">
+                                            <label class="form-control-label" for="input-country">Country</label>
+                                            <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="Jordan" readonly>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <hr class="my-4">
+                            <!-- Description -->
+                            <h6 class="heading-small text-muted mb-4">About me</h6>
+
+                            <div class="col-lg-10 aa-contact-area">
+                                <div class="form-group text-left">
+                                    <label asp-for="Patient_Aboutme" class="control-label"></label>
+                                    <input asp-for="Patient_Aboutme" type="text" class="form-control" value="@Model.Patient_Aboutme" readonly />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

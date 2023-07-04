@@ -1,0 +1,36 @@
+﻿@model ClinicProject.Models.Owner
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout_Owner.cshtml";
+}
+<style>
+    .button-container {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .nice-button {
+        display: inline-block;
+        padding: 20px 40px;
+        background-color: #337ab7;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+        .nice-button:hover {
+            background-color: #23527c;
+        }
+</style>
+
+<div class="button-container">
+    <a asp-action="AllDoctorsRequest" class="nice-button">All Doctors Requests</a>
+    <a asp-action="AllAcceptsDoctor" class="nice-button">All Accepts Doctor</a>
+    <a asp-action="AllClinics" class="nice-button">All Clinics</a>
+    <a asp-action="ReceiveNoteFromPatient" class="nice-button">All Notes Patients</a>
+    <a asp-action="ReceiveNoteFromDoctor" class="nice-button">All Notes Doctors</a>
+</div>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ClinicProject.Models.Doctor>
+
+@{
+    ViewData["Title"] = "AllAcceptsDoctor";
+    Layout = "~/Views/Shared/_Layout_Owner.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Doctors Requests</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- Bootstrap CSS -->
+</head>
+
+<body>
+    <div class="content">
+        <div class="container">
+            <h2 class="mb-5">Doctors </h2>
+            <div class="table-responsive custom-table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Specialization</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                
+                                <td>@Html.DisplayFor(modelItem => item.Doctor_FirstName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Doctor_LastName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Doctor_Gender)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Doctor_Specialization)</td>
+                                <td>
+                                    <a asp-action="DoctorDetails" asp-route-id="@item.DoctorId" class="btn btn-outline-warning">Details</a>
+                                    <a asp-action="DeleteExistingDoctor" class="btn btn-outline-danger" asp-route-id="@item.DoctorId">Delete Doctor</a>
+                                </td>
+
+                               
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a asp-action="Index" class="btn btn-outline-dark">Back</a>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

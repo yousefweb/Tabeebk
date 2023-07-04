@@ -1,0 +1,127 @@
+@model ClinicProject.ViewModels.DoctorRequestViewModel
+
+@{
+    ViewData["Title"] = "RegisterDoctor";
+    Layout = "~/Views/Shared/LoginRegister2_Layout/_Layout_Register.cshtml";
+}
+<title>Tabeebk Doctor | Register</title>
+
+<div class="container">
+    <header>Registration Doctor</header>
+
+    <form asp-action="RegisterDoctor" enctype="multipart/form-data">
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Personal Details</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label asp-for="DoctorRequest_FirstName">First Name</label>
+                        <input asp-for="DoctorRequest_FirstName" type="text" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label asp-for="DoctorRequest_LastName">Last Name</label>
+                        <input asp-for="DoctorRequest_LastName" type="text" placeholder="Enter your last name" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label asp-for="DoctorRequest_UserName">Username</label>
+                        <input asp-for="DoctorRequest_UserName" type="text" placeholder="Enter your Username" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label asp-for="DoctorRequest_Email">Email</label>
+                        <input asp-for="DoctorRequest_Email" type="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-field">
+                        <label asp-for="DoctorRequest_PhoneNumber">Mobile Number</label>
+                        <input asp-for="DoctorRequest_PhoneNumber" type="number" placeholder="Enter mobile number" required>
+                    </div>
+                    <div class="input-field">
+                        <label asp-for="DoctorRequest_Password">Password</label>
+                        <input asp-for="DoctorRequest_Password" type="password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="input-field">
+                        <label asp-for="DoctorRequest_Age">Age</label>
+                        <input asp-for="DoctorRequest_Password" type="number" placeholder="Enter your Age" required>
+                    </div>
+                    <div class="input-field">
+                        <label asp-for="DoctorRequest_Gender">Gender</label>
+                        <select asp-for="DoctorRequest_Gender" required>
+                            @if (ViewBag.gender != null)
+                            {
+                                <option disabled selected>Select gender</option>
+                                foreach (var G in ViewBag.gender)
+                                {
+                                    <option value="@G">@G</option>
+                                }
+
+                            }
+
+                        </select>
+                    </div>
+
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                </div>
+            </div>
+
+            <div class="details ID">
+                <span class="title">Medical Information</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label asp-for="DoctorRequest_YearsOfExperience">Years Of Experience</label>
+                        <input asp-for="DoctorRequest_YearsOfExperience" type="number" placeholder="Enter years of experience" required>
+                    </div>
+
+
+
+                    <div class="input-field">
+                        <label asp-for="DoctorRequest_Specialization">Specialization</label>
+                        <select asp-for="DoctorRequest_Specialization" required>
+                            @if (ViewBag.Specialization != null)
+                            {
+                                <option disabled selected>Select specialization</option>
+                                foreach (var G in ViewBag.Specialization)
+                                {
+                                    <option value="@G">@G</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="input-field">
+                        <label asp-for="DoctorRequest_AppointmentType">Appointment Type</label>
+                        <select asp-for="DoctorRequest_AppointmentType" required>
+                            @if (ViewBag.AppointmentType != null)
+                            {
+                                <option disabled selected>Select appointment type</option>
+                                foreach (var G in ViewBag.AppointmentType)
+                                {
+                                    <option value="@G">@G</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <label asp-for="DoctorRequest_ImageProfile">Profile Image</label>
+                        <input asp-for="DoctorRequest_ImageProfile" type="file" name="DoctorRequest_ImageProfile" class="form-control">
+                    </div>
+                    <div class="input-field">
+                        <label asp-for="DoctorRequest_Certification">Certification</label>
+                        <input asp-for="DoctorRequest_Certification" type="file" name="DoctorRequest_Certification" class="form-control">
+                    </div>
+                    <div class="input-field">
+                        <button asp-action="RegisterDoctor" class="sumbit">
+                            <span class="btnText">Register</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>

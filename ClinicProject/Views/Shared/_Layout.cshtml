@@ -1,0 +1,541 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject ClinicProject.Data.Search Search
+
+@inject SignInManager<IdentityUser> signInManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] - Tabeebk</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/img/favicon.ico" type="image/x-icon">
+
+    <!-- Font awesome -->
+    <link href="~/css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="~/css/bootstrap.css" rel="stylesheet">
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="~/css/slick.css">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="~/css/nouislider.css">
+    <!-- Fancybox slider -->
+    <link rel="stylesheet" href="~/css/jquery.fancybox.css" type="text/css" media="screen" />
+    <!-- Theme color -->
+    <link id="switcher" href="~/css/theme-color/default-theme.css" rel="stylesheet">
+
+    <!-- Main style sheet -->
+    <link href="~/css/style.css" rel="stylesheet">
+
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+
+
+</head>
+<body class="aa-price-range">
+    <!-- Pre Loader -->
+    <div id="aa-preloader-area">
+        <div class="pulse"></div>
+    </div>
+    <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-angle-double-up"></i></a>
+    <!-- END SCROLL TOP BUTTON -->
+    <!-- Start header section -->
+    @if (signInManager.IsSignedIn(User) && User.IsInRole("Patient"))
+    {
+        <header id="aa-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-header-area">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 col-xs-12 text-left">
+                                    <a asp-action="LoginPatient" asp-controller="Patient"
+                                       class="aa-register" style="color: white;">@User.Identity.Name</a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-xs-12 text-right" style="padding-top: -10px;">
+                                    <div class="float-right">
+                                        <form method="post" asp-controller="Patient" asp-action="Logout">
+                                            <button class="btn btn-link" style="margin-top: -5px;">
+                                                <span class="aa-register" style="color: white;">Logout</span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+
+    }
+    else
+    {
+        <header id="aa-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-header-area">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 col-xs-12 text-left">
+                                    <a asp-action="LogIn" asp-controller="Owner" class="aa-register" style="color: white;">Im owner</a>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-xs-12 text-right">
+                                    <a asp-action="Login" asp-controller="Home" class="aa-login" style="color: white;">Login | </a>
+
+                                    <a asp-action="Register" asp-controller="Home" class="aa-register" style="color: white;">Register</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    }
+
+
+
+    @if (signInManager.IsSignedIn(User) && User.IsInRole("Patient"))
+    {
+        <section id="aa-menu-area">
+            <nav class="navbar navbar-default main-navbar" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- LOGO -->
+                        <!-- Text based logo -->
+                        <a class="navbar-brand aa-logo" asp-action="Index" asp-controller="Home"> Tab<span>ee</span>bk</a>
+                        <!-- Image based logo -->
+                        <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
+                            <li class="active"><a asp-action="Index" asp-controller="Home">HOME</a></li>
+
+                            <li class="dropdown"><a asp-action="profile" asp-controller="Patient">Profile</a></li>
+
+
+                            <li><a asp-action="PatientContactAdmin" asp-controller="Patient">CONTACT</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </nav>
+        </section>
+        <!-- End menu section -->
+        <!-- Start slider  -->
+        <section id="aa-slider">
+            <div class="aa-slider-area">
+                <!-- Top slider -->
+                <div class="aa-top-slider">
+                    <!-- Top slider single slide -->
+                    <div class="aa-top-slider-single">
+                        <img src="~/img/slider/doctor11.jpg" alt="img">
+                        <!-- Top slider content -->
+                        <div class="aa-top-slider-content">
+                            <span class="aa-top-slider-catg">Top Doctors</span>
+                            <h2 class="aa-top-slider-title">+99 Perfect Clinics</h2>
+                            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Jordan</p>
+                            <span class="aa-top-slider-off">30% OFF</span>
+                            <p class="aa-top-slider-price">Start with  10JD</p>
+                        </div>
+                        <!-- / Top slider content -->
+                    </div>                <!-- / Top slider single slide -->
+                    <!-- Top slider single slide -->
+
+
+                    <div class="aa-top-slider-single">
+                        <img src="~/img/slider/Clinic1.jpg" alt="img">
+                        <!-- Top slider content -->
+                        <div class="aa-top-slider-content">
+                            <span class="aa-top-slider-catg">Top Doctors</span>
+                            <h2 class="aa-top-slider-title">+99 Perfect Clinics</h2>
+                            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Jordan</p>
+                            <span class="aa-top-slider-off">30% OFF</span>
+                            <p class="aa-top-slider-price">Start with  10JD</p>
+                        </div>
+                        <!-- / Top slider content -->
+                    </div>
+
+                    <div class="aa-top-slider-single">
+                        <img src="~/img/slider/Clinic2.jpg" alt="img">
+                        <!-- Top slider content -->
+                        <div class="aa-top-slider-content">
+                            <span class="aa-top-slider-catg">Top Doctors</span>
+                            <h2 class="aa-top-slider-title">+99 Perfect Clinics</h2>
+                            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Jordan</p>
+                            <span class="aa-top-slider-off">30% OFF</span>
+                            <p class="aa-top-slider-price">Start with  10JD</p>
+                        </div>
+                        <!-- / Top slider content -->
+                    </div>
+                    <div class="aa-top-slider-single">
+                        <img src="~/img/slider/Doctor8.jpg" alt="img">
+                        <!-- Top slider content -->
+                        <div class="aa-top-slider-content">
+                            <span class="aa-top-slider-catg">Top Doctors</span>
+                            <h2 class="aa-top-slider-title">+99 Perfect Clinics</h2>
+                            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Jordan</p>
+                            <span class="aa-top-slider-off">30% OFF</span>
+                            <p class="aa-top-slider-price">Start with  10JD</p>
+                        </div>
+                        <!-- / Top slider content -->
+                    </div>
+
+                    <div class="aa-top-slider-single">
+                        <img src="~/img/slider/Doctor5.jpg" alt="img">
+                        <!-- Top slider content -->
+                        <div class="aa-top-slider-content">
+                            <span class="aa-top-slider-catg">Top Doctors</span>
+                            <h2 class="aa-top-slider-title">+99 Perfect Clinics</h2>
+                            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Jordan</p>
+                            <span class="aa-top-slider-off">30% OFF</span>
+                            <p class="aa-top-slider-price">Start with  10JD</p>
+                        </div>
+                        <!-- / Top slider content -->
+                    </div>
+
+
+                    <!-- / Top slider single slide -->
+                </div>
+            </div>
+        </section>
+        <!-- End slider  -->
+        <!-- Advance Search -->
+        <section id="aa-advance-search">
+            <div class="container">
+                <div class="aa-advance-search-area">
+                    <form asp-action="Search" asp-controller="Home" method="post">
+                        <div class="form">
+                            <div class="aa-advance-search-top">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="aa-single-advance-search">
+                                            <input asp-for="@Search.Name" type="text" placeholder="Name of doctor">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="aa-single-advance-search">
+                                            <select asp-for="@Search.OrderBy">
+                                                <option value="0" selected>Oreder By</option>
+                                                <option>Price(Lowest first)</option>
+                                                <option>Price(highest first)</option>
+                                                <option>Rate(Lowest first)</option>
+                                                <option>Rate(highest first)</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="aa-single-advance-search">
+                                            <select asp-for="@Search.Location">
+                                                <option value="0" disabled selected>Location</option>
+                                                <option>Amman</option>
+                                                <option>Irbid</option>
+                                                <option>Zarqa</option>
+                                                <option>Aqaba</option>
+                                                <option>Salt</option>
+                                                <option>Madaba</option>
+                                                <option>Ajloun</option>
+                                                <option>Jarash</option>
+                                                <option>Karak</option>
+                                                <option>Maan</option>
+                                                <option>Altafila</option>
+                                                <option>Mafraq</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="aa-single-advance-search">
+                                            <select asp-for="@Search.Specialization">
+                                                <option value="0" selected>Specialization</option>
+                                                <option>Family_medicine</option>
+                                                <option>nternal_medicine</option>
+                                                <option>Pediatrics</option>
+                                                <option>Obstetrics_and_gynecology</option>
+                                                <option>Cardiology</option>
+                                                <option>Dermatology</option>
+                                                <option>Gastroenterology</option>
+                                                <option>Neurology</option>
+                                                <option>Oncology</option>
+                                                <option>Ophthalmology</option>
+                                                <option>Orthopedics</option>
+                                                <option>Otolaryngology</option>
+                                                <option>Psychiatry</option>
+                                                <option>Pulmonology</option>
+                                                <option>Radiology</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="aa-single-advance-search">
+                                            <input type="submit" class="aa-search-btn" value="Search" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- / Advance Search -->
+        <div class="container">
+            @RenderBody()
+        </div>
+    }
+    else
+    {
+
+        <section id="aa-menu-area">
+            <nav class="navbar navbar-default main-navbar" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- LOGO -->
+                        <!-- Text based logo -->
+                        <a class="navbar-brand aa-logo" asp-action="Index" asp-controller="Home"> Tab<span>ee</span>bk</a>
+                        <!-- Image based logo -->
+                        <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
+                            <li class="active"><a asp-action="Index" asp-controller="Home">HOME</a></li>
+
+                            @* <li><a asp-action="PatientContactAdmin" asp-controller="Patient">CONTACT</a></li>*@
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </nav>
+        </section>
+        <!-- End menu section -->
+        <!-- Start slider  -->
+        <section id="aa-slider">
+            <div class="aa-slider-area">
+                <!-- Top slider -->
+                <div class="aa-top-slider">
+                    <!-- Top slider single slide -->
+                    <div class="aa-top-slider-single">
+                        <img src="~/img/slider/doctor11.jpg" alt="img">
+                        <!-- Top slider content -->
+                        <div class="aa-top-slider-content">
+                            <span class="aa-top-slider-catg">Top Doctors</span>
+                            <h2 class="aa-top-slider-title">+99 Perfect Clinics</h2>
+                            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Jordan</p>
+                            <span class="aa-top-slider-off">30% OFF</span>
+                            <p class="aa-top-slider-price">Start with  10JD</p>
+                        </div>
+                        <!-- / Top slider content -->
+                    </div>                <!-- / Top slider single slide -->
+                    <!-- Top slider single slide -->
+
+
+                    <div class="aa-top-slider-single">
+                        <img src="~/img/slider/Clinic1.jpg" alt="img">
+                        <!-- Top slider content -->
+                        <div class="aa-top-slider-content">
+                            <span class="aa-top-slider-catg">Top Doctors</span>
+                            <h2 class="aa-top-slider-title">+99 Perfect Clinics</h2>
+                            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Jordan</p>
+                            <span class="aa-top-slider-off">30% OFF</span>
+                            <p class="aa-top-slider-price">Start with  10JD</p>
+                        </div>
+                        <!-- / Top slider content -->
+                    </div>
+
+                    <div class="aa-top-slider-single">
+                        <img src="~/img/slider/Clinic2.jpg" alt="img">
+                        <!-- Top slider content -->
+                        <div class="aa-top-slider-content">
+                            <span class="aa-top-slider-catg">Top Doctors</span>
+                            <h2 class="aa-top-slider-title">+99 Perfect Clinics</h2>
+                            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Jordan</p>
+                            <span class="aa-top-slider-off">30% OFF</span>
+                            <p class="aa-top-slider-price">Start with  10JD</p>
+                        </div>
+                        <!-- / Top slider content -->
+                    </div>
+                    <div class="aa-top-slider-single">
+                        <img src="~/img/slider/Doctor8.jpg" alt="img">
+                        <!-- Top slider content -->
+                        <div class="aa-top-slider-content">
+                            <span class="aa-top-slider-catg">Top Doctors</span>
+                            <h2 class="aa-top-slider-title">+99 Perfect Clinics</h2>
+                            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Jordan</p>
+                            <span class="aa-top-slider-off">30% OFF</span>
+                            <p class="aa-top-slider-price">Start with  10JD</p>
+                        </div>
+                        <!-- / Top slider content -->
+                    </div>
+
+                    <div class="aa-top-slider-single">
+                        <img src="~/img/slider/Doctor5.jpg" alt="img">
+                        <!-- Top slider content -->
+                        <div class="aa-top-slider-content">
+                            <span class="aa-top-slider-catg">Top Doctors</span>
+                            <h2 class="aa-top-slider-title">+99 Perfect Clinics</h2>
+                            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Jordan</p>
+                            <span class="aa-top-slider-off">30% OFF</span>
+                            <p class="aa-top-slider-price">Start with  10JD</p>
+                        </div>
+                        <!-- / Top slider content -->
+                    </div>
+
+
+                    <!-- / Top slider single slide -->
+                </div>
+            </div>
+        </section>
+        <!-- End slider  -->
+        <!-- Advance Search -->
+        <section id="aa-advance-search">
+            <div class="container">
+                <div class="aa-advance-search-area">
+                    <form asp-action="Search" asp-controller="Home" method="post">
+                        <div class="form">
+                            <div class="aa-advance-search-top">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="aa-single-advance-search">
+                                            <input asp-for="@Search.Name" type="text" placeholder="Name of doctor">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="aa-single-advance-search">
+                                            <select asp-for="@Search.OrderBy">
+                                                <option value="0" selected>Oreder By</option>
+                                                <option>Price(Lowest first)</option>
+                                                <option>Price(highest first)</option>
+                                                <option>Rate(Lowest first)</option>
+                                                <option>Rate(highest first)</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-2">
+                                        <div class="aa-single-advance-search">
+                                            <select asp-for="@Search.Location">
+                                                <option value="0" disabled selected>Location</option>
+                                                <option>Amman</option>
+                                                <option>Irbid</option>
+                                                <option>Zarqa</option>
+                                                <option>Aqaba</option>
+                                                <option>Salt</option>
+                                                <option>Madaba</option>
+                                                <option>Ajloun</option>
+                                                <option>Jarash</option>
+                                                <option>Karak</option>
+                                                <option>Maan</option>
+                                                <option>Altafila</option>
+                                                <option>Mafraq</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="aa-single-advance-search">
+                                            <select asp-for="@Search.Specialization">
+                                                <option value="0" selected>Specialization</option>
+                                                <option>Family_medicine</option>
+                                                <option>Internal_medicine</option>
+                                                <option>Pediatrics</option>
+                                                <option>Obstetrics_and_gynecology</option>
+                                                <option>Cardiology</option>
+                                                <option>Dermatology</option>
+                                                <option>Gastroenterology</option>
+                                                <option>Neurology</option>
+                                                <option>Oncology</option>
+                                                <option>Ophthalmology</option>
+                                                <option>Orthopedics</option>
+                                                <option>Otolaryngology</option>
+                                                <option>Psychiatry</option>
+                                                <option>Pulmonology</option>
+                                                <option>Radiology</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="aa-single-advance-search">
+                                            <input type="submit" class="aa-search-btn" value="Search" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- / Advance Search -->
+        <div class="container">
+            @RenderBody()
+        </div>
+    }
+    <!-- Footer -->
+    <footer id="aa-footer" style="background-color:#E5E4E2; color: #29465B;>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <footer class="aa-footer-area" style="background-color: #29465B; color: #fff; font-family: Arial, sans-serif; font-size: 14px; padding: 20px;">
+                        <div class="row" style="display: flex; flex-wrap: wrap;">
+                            <div class="col-md-3 col-sm-6 col-xs-12" style="flex: 1;">
+                                <div class="aa-footer-left">
+                                    <p>Designed by <a rel="nofollow" href="https://www.just.edu.jo/Pages/Default.aspx" style="color: #fff; font-weight: bold; text-decoration: none;">Just</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-20 col-xs-20" style="flex: 2;">
+                                <div class="aa-footer-right">
+                                    <a asp-action="Index" asp-controller="Home" style="color: #fff; font-weight: bold; text-decoration: none;">Home</a>
+                                    <a href="#" style="color: #fff; font-weight: bold; text-decoration: none;">About</a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- / Footer -->
+    <!-- jQuery library -->
+    <script src="~/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/js/bootstrap.js"></script>
+    <!-- slick slider -->
+    <script type="text/javascript" src="~/js/slick.js"></script>
+    <!-- Price picker slider -->
+    <script type="text/javascript" src="~/js/nouislider.js"></script>
+    <!-- mixit slider -->
+    <script type="text/javascript" src="~/js/jquery.mixitup.js"></script>
+    <!-- Add fancyBox -->
+    <script type="text/javascript" src="~/js/jquery.fancybox.pack.js"></script>
+    <!-- Custom js -->
+    <script src="~/js/custom.js"></script>
+
+</body>
+
+</html>

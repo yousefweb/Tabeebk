@@ -1,0 +1,53 @@
+﻿@model ClinicProject.Models.Clinic
+@{
+    ViewData["Title"] = "TimeOfDay";
+    Layout = "~/Views/Shared/LoginRegister2_Layout/_Layout_Register.cshtml";
+   }
+
+<div class="container">
+    <header>Time For Day</header>
+
+    <form asp-action="TimeOfDaydone" enctype="multipart/form-data">
+        <div class="form first">
+            <div class="details personal">
+
+                <div class="fields">
+                    
+                    @for(int i=0;i<Model.Clinic_Days.Count;i++){
+                     
+                        <div class="input-field">
+                          @Model.Clinic_Days[i].DayOfWeek
+
+                            <label asp-for="Clinic_Days[i].StartTime">Start Time</label>
+                            <input asp-for="Clinic_Days[i].StartTime" type="time" placeholder="Start time" />
+
+                            <label asp-for="Clinic_Days[i].EndTime">End Time </label>
+                            <input asp-for="Clinic_Days[i].EndTime" type="time" placeholder="End time" />
+
+                            <input asp-for="Clinic_Days[i].ClinicDayId" type="hidden" />
+                            <input asp-for="Clinic_Days[i].ClinicId" type="hidden" />
+
+                            <input asp-for="Clinic_Days[i].DayOfWeek" value="@Model.Clinic_Days[i].DayOfWeek" type="hidden" />
+
+                            @if (Model.Clinic_Days.Count > 3)
+                            {
+                                <h6>______________________</h6>
+                            }
+
+                        </div>
+                    }
+                   
+                 </div>
+
+            </div>
+            <div class="input-field">
+                <button asp-action="TimeOfDaydone" class="sumbit">
+                    <span class="btnText">Save</span>
+                    <i class="uil uil-navigator"></i>
+                </button>
+            </div>
+                    </div>
+                    </form>
+                    </div>
+
+

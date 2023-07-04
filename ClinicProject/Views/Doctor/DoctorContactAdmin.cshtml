@@ -1,0 +1,19 @@
+﻿@model DoctorNoteToAdmin
+@{
+
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Doctor_Layout/_Layout_Doctor.cshtml";
+}
+
+
+
+<h2 style="color: brown">Contact Admin</h2>
+@Html.HiddenFor(d=>d.Id)
+<form asp-action="DoctorContactAdmin" method="post">
+
+    <div class="form-group">
+        <label asp-for="Discription">Description:</label>
+        <textarea asp-for="Discription" class="form-control" style="height: 200px; vertical-align: top;"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>

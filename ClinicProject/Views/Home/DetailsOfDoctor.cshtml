@@ -1,0 +1,280 @@
+﻿@model Dictionary<Doctor,Clinic>
+@{
+    ViewData["Title"] = "DetailsOfDoctor";
+    Layout = "~/Views/Shared/_Layout_DetailsOfDoctor.cshtml";
+}
+
+<html>
+
+<head>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .rate {
+            float: left;
+            height: 46px;
+            padding: 0 10px;
+        }
+
+            .rate:not(:checked) > input {
+                position: absolute;
+                top: -9999px;
+            }
+
+            .rate:not(:checked) > label {
+                float: right;
+                width: 1em;
+                overflow: hidden;
+                white-space: nowrap;
+                cursor: pointer;
+                font-size: 30px;
+                color: #ccc;
+            }
+
+                .rate:not(:checked) > label:before {
+                    content: '★ ';
+                }
+
+            .rate > input:checked ~ label {
+                color: #ffc700;
+            }
+
+            .rate:not(:checked) > label:hover,
+            .rate:not(:checked) > label:hover ~ label {
+                color: #deb217;
+            }
+
+            .rate > input:checked + label:hover,
+            .rate > input:checked + label:hover ~ label,
+            .rate > input:checked ~ label:hover,
+            .rate > input:checked ~ label:hover ~ label,
+            .rate > label:hover ~ input:checked ~ label {
+                color: #c59b08;
+            }
+
+    </style>
+</head>
+
+<body>
+    @if (Model.Count > 0)
+    {
+        var doctor1 = Model.Keys.ElementAtOrDefault(0);
+        var clinic1 = Model.Values.ElementAtOrDefault(0);
+        var doctor2 = Model.Keys.ElementAtOrDefault(1);
+        var clinic2 = Model.Values.ElementAtOrDefault(1);
+        var doctor3 = Model.Keys.ElementAtOrDefault(2);
+        var clinic3 = Model.Values.ElementAtOrDefault(2);
+
+
+        <!-- Start Properties  -->
+        <section id="aa-properties">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="aa-properties-content">
+                            <!-- Start properties content body -->
+                            <div class="aa-properties-details">
+                                <div class="aa-properties-details-img">
+
+                                    <a href="#" class="aa-properties-item-img">
+                                        <img src="~/uploads/@doctor1.Doctor_ImageProfile" alt="img">
+                                    </a>
+
+                                </div>
+
+                                <div class="aa-properties-info">
+                                    <h2>Dr: @doctor1.Doctor_FirstName @doctor1.Doctor_LastName</h2>
+                                    <span class="aa-price">@clinic1.clinc_Price JD</span>
+                                    <p>@clinic1.Clinc_Description</p>
+
+                                </div>
+                                <!-- Properties social share -->
+                                <div class="aa-nearby-properties">
+                                    <div class="aa-title">
+                                        <h2>Nearby Clinic</h2>
+                                        <span></span>
+                                    </div>
+                                    @if (Model.Count == 1)
+                                    {
+                                        <h1>No Nearby Clinic</h1>
+                                    }
+                                    else
+                                    {
+                                        <div class="aa-nearby-properties-area">
+                                            <div class="row">
+                                                @if (Model.Count > 1)
+                                                {
+                                                    <div class="col-md-6">
+                                                        <article class="aa-properties-item">
+
+                                                            <a href="#" class="aa-properties-item-img">
+                                                                <img src="~/uploads/@doctor2.Doctor_ImageProfile" alt="img">
+                                                            </a>
+
+                                                            @if (doctor2.Doctor_AppointmentType.Equals(ClinicProject.Data.Enum.AppointmentType.Urgent))
+                                                            {
+                                                                <div class="aa-tag sold-out">
+                                                                    @doctor2.Doctor_AppointmentType
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="aa-tag for-sale">
+                                                                    @doctor2.Doctor_AppointmentType
+                                                                </div>
+                                                            }
+
+                                                            <div class="aa-properties-item-content">
+                                                                <div class="aa-properties-info">
+                                                                    <span>@doctor2.Doctor_Specialization</span>
+
+                                                                </div>
+                                                                <div class="aa-properties-about">
+                                                                    <h3><a href="#">Dr: @doctor2.Doctor_FirstName @doctor2.Doctor_LastName</a></h3>
+                                                                    <p> @clinic2.ClinicRate stars</p>
+                                                                </div>
+                                                                <div class="aa-properties-detial">
+                                                                    <span class="aa-price">
+                                                                        @clinic2.clinc_Price JD
+                                                                    </span>
+                                                                    <a asp-action="DetailsOfDoctor" asp-controller="Home" asp-route-id="@doctor2.DoctorId" class="aa-secondary-btn">View Details</a>
+                                                                </div>
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                }
+
+                                                @if (Model.Count > 2)
+                                                {
+                                                    <div class="col-md-6">
+                                                        <article class="aa-properties-item">
+
+                                                            <a href="#" class="aa-properties-item-img">
+                                                                <img src="~/uploads/@doctor3.Doctor_ImageProfile" alt="img">
+                                                            </a>
+
+                                                            @if (doctor3.Doctor_AppointmentType.Equals(ClinicProject.Data.Enum.AppointmentType.Urgent))
+                                                            {
+                                                                <div class="aa-tag sold-out">
+                                                                    @doctor3.Doctor_AppointmentType
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="aa-tag for-sale">
+                                                                    @doctor3.Doctor_AppointmentType
+                                                                </div>
+                                                            }
+
+                                                            <div class="aa-properties-item-content">
+                                                                <div class="aa-properties-info">
+                                                                    <span>@doctor3.Doctor_Specialization</span>
+
+                                                                </div>
+                                                                <div class="aa-properties-about">
+                                                                    <h3><a href="#">Dr: @doctor3.Doctor_FirstName @doctor3.Doctor_LastName</a></h3>
+                                                                    <p> @clinic3.ClinicRate stars</p>
+                                                                </div>
+                                                                <div class="aa-properties-detial">
+                                                                    <span class="aa-price">
+                                                                        @clinic3.clinc_Price JD
+                                                                    </span>
+                                                                    <a asp-action="DetailsOfDoctor" asp-controller="Home" asp-route-id="@doctor3.DoctorId" class="aa-secondary-btn">View Details</a>
+                                                                </div>
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                }
+
+                                            </div>
+                                        </div>
+
+                                    }
+
+                                </div>
+                                <!-- Nearby properties -->
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Start properties sidebar -->
+                    <div class="col-md-4">
+                        <aside class="aa-properties-sidebar">
+                            <!-- Start Single properties sidebar -->
+                            <div class="aa-properties-single-sidebar">
+                                <h3>@clinic1.Clinic_Name Clinic</h3>
+                                <form action="">
+                                    <div class="aa-single-advance-search">
+                                        <h4>Location: @clinic1.Clinic_Location</h4>
+                                    </div>
+                                    <div class="aa-single-advance-search">
+                                        <h4>Specialization: @doctor1.Doctor_Specialization</h4>
+                                    </div>
+                                    <div class="aa-single-advance-search">
+                                        <h4>Rate: @clinic1.ClinicRate Stars</h4>
+                                    </div>
+
+                                    @if (User.IsInRole("Patient"))
+                                    {
+                                        <div class="rate">
+                                            <input type="radio" id="star5" name="rate" value="5" data-clinicid="@clinic1.ClinicId" />
+                                            <label for="star5" title="text">5 stars</label>
+                                            <input type="radio" id="star4" name="rate" value="4" data-clinicid="@clinic1.ClinicId" />
+                                            <label for="star4" title="text">4 stars</label>
+                                            <input type="radio" id="star3" name="rate" value="3" data-clinicid="@clinic1.ClinicId" />
+                                            <label for="star3" title="text">3 stars</label>
+                                            <input type="radio" id="star2" name="rate" value="2" data-clinicid="@clinic1.ClinicId" />
+                                            <label for="star2" title="text">2 stars</label>
+                                            <input type="radio" id="star1" name="rate" value="1" data-clinicid="@clinic1.ClinicId" />
+                                            <label for="star1" title="text">1 star</label>
+                                        </div>
+                                    }
+
+                                    <div class="aa-single-advance-search">
+                                        <input asp-action="ClinicAppointmentTimes" asp-controller="Clinic" asp-route-id="@clinic1.ClinicId" type="submit" value="View Available Times" class="aa-search-btn">
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- Start Single properties sidebar -->
+
+                        </aside>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- / Properties  -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $('input[type="radio"]').on('click', function () {
+                    var rating = $(this).val();
+                    var clinicId = $(this).data('clinicid');
+
+                    $.ajax({
+                        url: '@Url.Action("Rating", "Patient")',
+                        method: 'POST',
+                        data: { rate: rating, clinicId: clinicId },
+                        success: function (response) {
+                            // Handle success response if needed
+                        },
+                        error: function (xhr, status, error) {
+                            // Handle error if needed
+                        }
+                    });
+                });
+            });
+        </script>
+    }
+</body>
+
+</html>
+
+
+
+

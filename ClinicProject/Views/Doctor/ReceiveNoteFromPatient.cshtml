@@ -1,0 +1,31 @@
+﻿@model List<PatientNoteToDoctor>
+@{
+    ViewData["Title"] = "ReceiveNoteFromPatient";
+    Layout = "~/Views/Shared/Doctor_Layout/_Layout_Doctor.cshtml";
+}
+
+<h2 style="color: brown">Admin Recieve Notes From Patients</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Patient Name</th>
+            <th>Date</th>
+            <th>Description</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var note in Model)
+        {
+            <tr>
+                <td>@note.patient.Patient_FirstName @note.patient.Patient_LastName</td>
+                <th>@note.MessageTime</th>
+                <td>
+                    <textarea rows="5" cols="50" readonly>@note.Note</textarea>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

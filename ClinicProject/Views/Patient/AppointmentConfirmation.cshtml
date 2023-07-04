@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewData["Title"] = "AppointmentConfirmation";
+    Layout = "~/Views/Shared/_Layout_DetailsOfDoctor.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Appointment Confirmation</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .background {
+            background-color: #f8f8f8;
+            padding: 20px;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .return-button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="container">
+            <h1>Appointment Confirmed</h1>
+            <p>Your appointment has been successfully booked.</p>
+            <p>Thank you for choosing our clinic.</p>
+
+            <div class="button-container">
+                <button class="return-button" onclick="returnToSlotTime()">Return to Slot Time</button>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    function returnToSlotTime() {
+        alert("Thank you for confirming your appointment!");
+        window.location.href = 'ClinicAppointmentTimes.cshtml';
+    }
+</script>
+

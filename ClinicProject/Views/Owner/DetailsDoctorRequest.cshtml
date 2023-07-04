@@ -1,0 +1,103 @@
+﻿@model ClinicProject.Models.DoctorRequest
+
+@{
+    ViewData["Title"] = "DetailsDoctorRequest";
+    Layout = "~/Views/Shared/_Layout_Owner.cshtml";
+}
+
+<h2>Details of <span style="color:red">@Model.DoctorRequest_FirstName @Model.DoctorRequest_LastName</span></h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.DoctorRequest_FirstName)</td>
+                <td>@Html.DisplayFor(model => model.DoctorRequest_FirstName)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.DoctorRequest_LastName)</td>
+                <td>@Html.DisplayFor(model => model.DoctorRequest_LastName)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.DoctorRequest_UserName)</td>
+                <td>@Html.DisplayFor(model => model.DoctorRequest_UserName)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.DoctorRequest_Password)</td>
+                <td>@Html.DisplayFor(model => model.DoctorRequest_Password)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.DoctorRequest_Email)</td>
+                <td>@Html.DisplayFor(model => model.DoctorRequest_Email)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.DoctorRequest_PhoneNumber)</td>
+                <td>@Html.DisplayFor(model => model.DoctorRequest_PhoneNumber)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.DoctorRequest_ImageProfile)</td>
+                <td>
+                    <a href="~/uploads/@Model.DoctorRequest_ImageProfile" target="_blank" class="aa-properties-item-img">
+                        <img src="~/uploads/@Model.DoctorRequest_ImageProfile" alt="img" style="max-width: 30%; height: auto;">
+                    </a>
+                </td>
+               
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.DoctorRequest_Certification)</td>
+                <td>
+                    <a href="~/uploads/@Model.DoctorRequest_Certification" target="_blank" class="aa-properties-item-img">
+                        <img src="~/uploads/@Model.DoctorRequest_Certification" alt="img" style="max-width: 30%; height: auto;">
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.DoctorRequest_Age)</td>
+                <td>@Html.DisplayFor(model => model.DoctorRequest_Age)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.DoctorRequest_RegisterTime)</td>
+                <td>@Html.DisplayFor(model => model.DoctorRequest_RegisterTime)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.DoctorRequest_Gender)</td>
+                <td>@Html.DisplayFor(model => model.DoctorRequest_Gender)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.DoctorRequest_AppointmentType)</td>
+                <td>@Html.DisplayFor(model => model.DoctorRequest_AppointmentType)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.DoctorRequest_YearsOfExperience)</td>
+                <td>@Html.DisplayFor(model => model.DoctorRequest_YearsOfExperience)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.DoctorRequest_Specialization)</td>
+                <td>@Html.DisplayFor(model => model.DoctorRequest_Specialization)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.StatusOfDoctor)</td>
+                <td>@Html.DisplayFor(model => model.StatusOfDoctor)</td>
+            </tr>
+
+            
+        </tbody>
+    </table>
+</div>
+
+
+<div>
+    <a asp-action="AcceptDoctor" class="btn btn-outline-success" asp-route-id="@Model.DoctorRequestId">Accept</a>
+    <a asp-action="RejectDoctor" class="btn btn-outline-danger" asp-route-id="@Model.DoctorRequestId">Reject</a>
+    <a asp-action="AllDoctorsRequest" class="btn btn-outline-dark">Back to List</a>
+</div>
+
+

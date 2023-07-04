@@ -1,0 +1,148 @@
+﻿@model Dictionary<Doctor, Clinic>
+
+@{
+    ViewData["Title"] = "DoctorProfile";
+    Layout = "~/Views/Shared/Doctor_Layout/_Layout_Doctor.cshtml";
+}
+@foreach (var doctor in Model)
+{
+    <div class="card-body">
+        
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <h2 class="heading-small text-muted mb-4">Doctor information</h2>
+            <div class="pl-lg-4">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label asp-for="@doctor.Key.Doctor_UserName" class="control-label"></label>
+                            <input asp-for="@doctor.Key.Doctor_UserName" class="form-control" value="@doctor.Key.Doctor_UserName" readonly />
+                            <span asp-validation-for="@doctor.Key.Doctor_UserName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label asp-for="@doctor.Key.Doctor_Email" class="control-label"></label>
+                            <input asp-for="@doctor.Key.Doctor_Email" class="form-control" value="@doctor.Key.Doctor_Email" readonly />
+                            <span asp-validation-for="@doctor.Key.Doctor_Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label asp-for="@doctor.Key.Doctor_FirstName" class="control-label"></label>
+                            <input asp-for="@doctor.Key.Doctor_FirstName" class="form-control" value="@doctor.Key.Doctor_FirstName" readonly />
+                            <span asp-validation-for="@doctor.Key.Doctor_FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label asp-for="@doctor.Key.Doctor_LastName" class="control-label"></label>
+                            <input asp-for="@doctor.Key.Doctor_LastName" class="form-control" value="@doctor.Key.Doctor_LastName" readonly />
+                            <span asp-validation-for="@doctor.Key.Doctor_LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label asp-for="@doctor.Key.Doctor_Age" class="control-label"></label>
+                            <input asp-for="@doctor.Key.Doctor_Age" class="form-control" value="@doctor.Key.Doctor_Age" readonly />
+                            <span asp-validation-for="@doctor.Key.Doctor_Age" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label asp-for="@doctor.Key.Doctor_PhoneNumber" class="control-label"></label>
+                            <input asp-for="@doctor.Key.Doctor_PhoneNumber" class="form-control" value="@doctor.Key.Doctor_PhoneNumber" readonly />
+                            <span asp-validation-for="@doctor.Key.Doctor_PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label asp-for="@doctor.Key.Doctor_Gender" class="control-label"></label>
+                            <input asp-for="@doctor.Key.Doctor_Gender" class="form-control" value="@doctor.Key.Doctor_Gender" readonly />
+                            <span asp-validation-for="@doctor.Key.Doctor_Gender" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label asp-for="@doctor.Key.Doctor_Specialization" class="control-label"></label>
+                            <input asp-for="@doctor.Key.Doctor_Specialization" class="form-control" value="@doctor.Key.Doctor_Specialization" readonly />
+                            <span asp-validation-for="@doctor.Key.Doctor_Specialization" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label asp-for="@doctor.Key.DoctorAmount" class="control-label"></label>
+                        <input asp-for="@doctor.Key.DoctorAmount" class="form-control" value="@doctor.Key.DoctorAmount.ToString("0.00")" readonly />
+                        <span asp-validation-for="@doctor.Key.DoctorAmount" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label asp-for="@doctor.Key.Doctor_YearsOfExperience" class="control-label"></label>
+                        <input asp-for="@doctor.Key.Doctor_YearsOfExperience" class="form-control" value="@doctor.Key.Doctor_YearsOfExperience" readonly />
+                        <span asp-validation-for="@doctor.Key.Doctor_YearsOfExperience" class="text-danger"></span>
+                    </div>
+                </div>
+                <a asp-action="EditProfileDoctor" asp-route-id="@doctor.Key.DoctorId" class="btn btn-primary">Edit personal information</a>
+                </div>
+            </div>
+        @if (doctor.Value == null)
+        {
+            <h3><span style="color:red">You dont have clinic</span></h3>
+        }
+        else{
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <h2 class="heading-small text-muted mb-4">Clinic information</h2>
+            <div class="pl-lg-4">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label asp-for="@doctor.Value.Clinic_Name" class="control-label"></label>
+                            <input asp-for="@doctor.Value.Clinic_Name" class="form-control" value="@doctor.Value.Clinic_Name" readonly />
+                            <span asp-validation-for="@doctor.Value.Clinic_Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label asp-for="@doctor.Value.Clinic_Location" class="control-label"></label>
+                            <input asp-for="@doctor.Value.Clinic_Location" class="form-control" value="@doctor.Value.Clinic_Location" readonly />
+                            <span asp-validation-for="@doctor.Value.Clinic_Location" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label asp-for="@doctor.Value.Clinc_Description" class="control-label"></label>
+                            <input asp-for="@doctor.Value.Clinc_Description" class="form-control" value="@doctor.Value.Clinc_Description" readonly />
+                            <span asp-validation-for="@doctor.Value.Clinc_Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label asp-for="@doctor.Value.clinc_Price" class="control-label"></label>
+                            <input asp-for="@doctor.Value.clinc_Price" class="form-control" value="@doctor.Value.clinc_Price" readonly />
+                            <span asp-validation-for="@doctor.Value.clinc_Price" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <a asp-action="EditClinic" asp-route-id="@doctor.Value.ClinicId" class="btn btn-primary">Edit Clinic information</a>
+
+                </div>
+            </div>
+        }
+       
+
+    </div>
+}

@@ -1,0 +1,91 @@
+﻿@model IEnumerable<ClinicProject.Models.DoctorRequest>
+@{
+    ViewData["Title"] = "AllDoctorsRequest";
+    Layout = "~/Views/Shared/_Layout_Owner.cshtml";
+}
+<html lang="en">
+
+ 
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    
+
+    <title>Doctors Requests</title>
+  </head>
+
+  <body>
+       <div class="content">
+    
+      <div class="container">
+      <h2 class="mb-5">Doctors Requests</h2>
+      <div class="table-responsive custom-table-responsive">
+
+
+
+  </body>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th scope="col">Check</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Specialization</th>
+            <th scope="col">Actions</th>
+          
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr scope="row">
+                <th scope="row">
+                <label class="control control--checkbox">
+                  <input type="checkbox"/>
+                  <div class="control__indicator"></div>
+                </label>
+              </th>
+
+                <td>@Html.DisplayFor(modelItem => item.DoctorRequest_FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.DoctorRequest_LastName)</td>
+                <td>@Html.DisplayFor(modelItem => item.DoctorRequest_Gender)</td>
+                <td>@Html.DisplayFor(modelItem => item.DoctorRequest_Specialization)</td>
+                <td>
+                    <a asp-action="AcceptDoctor" class="btn btn-outline-success" asp-route-id="@item.DoctorRequestId">Accept</a>
+                    <a asp-action="RejectDoctor" class="btn btn-outline-danger" asp-route-id="@item.DoctorRequestId">Reject</a>
+                    <a asp-action="DetailsDoctorRequest" class="btn btn-outline-warning" asp-route-id="@item.DoctorRequestId">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="5">
+
+                <a asp-action="AcceptAllDoctor" class="btn btn-outline-success">Accept All</a>
+                <a asp-action="RejectAllDoctor" class="btn btn-outline-danger">Reject All</a>
+               
+            </td>
+           
+        </tr>
+         
+    </tfoot>
+   
+</table>
+<a asp-action="Index" class="btn btn-outline-dark">Back</a> 
+</HTML>
+
+
+

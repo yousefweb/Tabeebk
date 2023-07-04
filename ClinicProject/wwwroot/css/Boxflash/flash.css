@@ -1,0 +1,25 @@
+﻿
+.box {
+    width: 500px;
+    height: 50px;
+    margin: auto;
+    margin-top: 0px;
+    background-color: #FF5733;
+    animation: flash 1s infinite;
+}
+
+@keyframes flash {
+    0% {
+        background-color: #59abe3;
+    }
+
+    50% {
+        background-color: white;
+    }
+
+    100% {
+        background-color: #59abe3;
+    }
+}
+
+

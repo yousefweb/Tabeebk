@@ -1,0 +1,75 @@
+﻿@model ClinicProject.Models.Owner
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/LogIn_Layout/_Layout_Login.cshtml";
+}
+
+
+<html lang="en">
+<head>
+
+	<title>Login</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+
+	<link rel="stylesheet" href="\css\LogInCss\LogInPageOfOwner.css">
+
+</head>
+
+<body class="img js-fullheight" style="background-image: url(/img//ThirdOne.jpg);">
+
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Login</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+						<h3 class="mb-4 text-center">Owner</h3>
+						<form asp-action="LogIn" class="signin-form">
+
+							<div class="form-group">
+								<label asp-for="Owner_Email" class="control-label">Email</label>
+								<input asp-for="Owner_Email" class="form-control" />
+								<span asp-validation-for="Owner_Email" class="text-danger"></span>
+							</div>
+
+							<div class="form-group">
+								<label asp-for="Onwer_Password" class="control-label">Password</label>
+								<input asp-for="Onwer_Password" class="form-control" type="password" />
+								<span asp-validation-for="Onwer_Password" class="text-danger"></span>
+							</div>
+
+							<div class="form-group">
+								<button asp-action="LogIn" type="submit" asp-controller="Owner" class="form-control btn btn-primary submit px-3">Sign In</button>
+							</div>
+
+							<div class="form-group d-md-flex">
+								
+								
+							</div>
+
+
+						</form>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] - Tabeebk</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/img/favicon.ico" type="image/x-icon">
+
+    <!-- Font awesome -->
+    <link href="~/css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="~/css/bootstrap.css" rel="stylesheet">
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="~/css/slick.css">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="~/css/nouislider.css">
+    <!-- Fancybox slider -->
+    <link rel="stylesheet" href="~/css/jquery.fancybox.css" type="text/css" media="screen" />
+    <!-- Theme color -->
+    <link id="switcher" href="~/css/theme-color/default-theme.css" rel="stylesheet">
+
+    <!-- Main style sheet -->
+    <link href="~/css/style.css" rel="stylesheet">
+
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+
+
+</head>
+<body class="aa-price-range">
+    <!-- Pre Loader -->
+    <div id="aa-preloader-area">
+        <div class="pulse"></div>
+    </div>
+    <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-angle-double-up"></i></a>
+    <!-- END SCROLL TOP BUTTON -->
+    <!-- Start header section -->
+    <header id="aa-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-header-area">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12 text-left">
+                                <a asp-action="LogIn" asp-controller="Admin" class="aa-register" style="color: white;">Im owner</a>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12 text-right">
+                                <a asp-action="Login" asp-controller="Account" class="aa-login" style="color: white;">Login | </a>
+                                <a asp-action="Register" asp-controller="Account" class="aa-register" style="color: white;">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- End header section -->
+    <!-- Start menu section -->
+    <section id="aa-menu-area">
+        <nav class="navbar navbar-default main-navbar" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- LOGO -->
+                    <!-- Text based logo -->
+                    <a class="navbar-brand aa-logo" asp-action="Index" asp-controller="Home"> Tab<span>ee</span>bk</a>
+                    <!-- Image based logo -->
+                    <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
+                        <li class="active"><a asp-action="Index" asp-controller="Home">HOME</a></li>
+                        
+                        <li><a href="contact.html">CONTACT</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+    </section>
+    <!-- End menu section -->
+    <!-- Start slider  -->
+    <section id="aa-slider">
+        <div class="aa-slider-area">
+            <!-- Top slider -->
+            <div class="aa-top-slider">
+                <!-- Top slider single slide -->
+                <div class="aa-top-slider-single">
+                    <img src="~/img/slider/111.jpg" alt="img">
+                    <!-- Top slider content -->
+                    <div class="aa-top-slider-content">
+                        <span class="aa-top-slider-catg">Top Doctors</span>
+                        <h2 class="aa-top-slider-title">+99 Perfect Clinics</h2>
+                        <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Jordan</p>
+                        <span class="aa-top-slider-off">30% OFF</span>
+                        <p class="aa-top-slider-price">Start with  10JD</p>
+                        
+                    </div>
+                    <!-- / Top slider content -->
+                </div>
+                <!-- / Top slider single slide -->
+                <!-- Top slider single slide -->
+                <div class="aa-top-slider-single">
+                    <img src="~/img/slider/222.jpg" alt="img">
+                    <!-- Top slider content -->
+                    <div class="aa-top-slider-content">
+                        <span class="aa-top-slider-catg">Top Doctors</span>
+                        <h2 class="aa-top-slider-title">+99 Perfect Clinics</h2>
+                        <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Jordan</p>
+                        <span class="aa-top-slider-off">30% OFF</span>
+                        <p class="aa-top-slider-price">Start with  10JD</p>
+                    </div>
+                    <!-- / Top slider content -->
+                </div>
+                <!-- / Top slider single slide -->
+                <!-- Top slider single slide -->
+                <div class="aa-top-slider-single">
+                    <img src="~/img/slider/333.jpg" alt="img">
+                    <!-- Top slider content -->
+                    <div class="aa-top-slider-content">
+                         <span class="aa-top-slider-catg">Top Doctors</span>
+                        <h2 class="aa-top-slider-title">+99 Perfect Clinics</h2>
+                        <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Jordan</p>
+                        <span class="aa-top-slider-off">30% OFF</span>
+                        <p class="aa-top-slider-price">Start with  10JD</p>
+                    </div>
+                    <!-- / Top slider content -->
+                </div>
+                <!-- / Top slider single slide -->
+                <!-- Top slider single slide -->
+                <div class="aa-top-slider-single">
+                    <img src="~/img/slider/444.jpg" alt="img">
+                    <!-- Top slider content -->
+                    <div class="aa-top-slider-content">
+                        <span class="aa-top-slider-catg">Top Doctors</span>
+                        <h2 class="aa-top-slider-title">+99 Perfect Clinics</h2>
+                        <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Jordan</p>
+                        <span class="aa-top-slider-off">30% OFF</span>
+                        <p class="aa-top-slider-price">Start with  10JD</p>
+                    </div>
+                    <!-- / Top slider content -->
+                </div>
+                <!-- / Top slider single slide -->
+                <!-- Top slider single slide -->
+                <div class="aa-top-slider-single">
+                    <img src="~/img/slider/555.jpg" alt="img">
+                    <!-- Top slider content -->
+                    <div class="aa-top-slider-content">
+                        <span class="aa-top-slider-catg">Top Doctors</span>
+                        <h2 class="aa-top-slider-title">+99 Perfect Clinics</h2>
+                        <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Jordan</p>
+                        <span class="aa-top-slider-off">30% OFF</span>
+                        <p class="aa-top-slider-price">Start with  10JD</p>
+                    </div>
+                    <!-- / Top slider content -->
+                </div>
+                <!-- / Top slider single slide -->
+            </div>
+        </div>
+    </section>
+    <!-- End slider  -->
+    <div class="container">
+        @RenderBody()
+    </div>   
+    <!-- Footer -->
+    <footer id="aa-footer" style="background-color: #000; color: #fff;>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <footer class="aa-footer-area" style="background-color: #428bca; color: #fff; font-family: Arial, sans-serif; font-size: 14px; padding: 20px;">
+                        <div class="row" style="display: flex; flex-wrap: wrap;">
+                            <div class="col-md-3 col-sm-6 col-xs-12" style="flex: 1;">
+                                <div class="aa-footer-left">
+                                    <p>Designed by <a rel="nofollow" href="https://www.just.edu.jo/Pages/Default.aspx" style="color: #fff; font-weight: bold; text-decoration: none;">Just</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-20 col-xs-20" style="flex: 2;">
+                                <div class="aa-footer-right">
+                                    <a asp-action="Index" asp-controller="Home" style="color: #fff; font-weight: bold; text-decoration: none;">Home</a>
+                                    <a href="#" style="color: #fff; font-weight: bold; text-decoration: none;">About</a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+
+                </div>
+                </div>
+        </div>
+    </footer>
+    <!-- / Footer -->
+    <!-- jQuery library -->
+    <script src="~/js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/js/bootstrap.js"></script>
+    <!-- slick slider -->
+    <script type="text/javascript" src="~/js/slick.js"></script>
+    <!-- Price picker slider -->
+    <script type="text/javascript" src="~/js/nouislider.js"></script>
+    <!-- mixit slider -->
+    <script type="text/javascript" src="~/js/jquery.mixitup.js"></script>
+    <!-- Add fancyBox -->
+    <script type="text/javascript" src="~/js/jquery.fancybox.pack.js"></script>
+    <!-- Custom js -->
+    <script src="~/js/custom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+﻿@model ClinicProject.Models.Clinic
+@{
+    ViewData["Title"] = "AddClinic";
+    Layout = "~/Views/Shared/LoginRegister2_Layout/_Layout_Register.cshtml";
+}
+
+<title>Tabeebk Doctor | Add Clinic</title>
+
+<div class="container">
+    <header>Add clinic</header>
+
+    <form asp-action="AddClinic" enctype="multipart/form-data">
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Clinic Details</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label asp-for="Clinic_Name">Name</label>
+                        <input asp-for="Clinic_Name" type="text" placeholder="Enter clinic name" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label asp-for="clinc_Price">Price</label>
+                        <input asp-for="clinc_Price" type="text" placeholder="Enter clinic price" required>
+                    </div>
+
+
+                    <div class="input-field">
+                        <label asp-for="Clinic_Location">Location</label>
+                        <select asp-for="Clinic_Location" required>
+                         
+                            @if (ViewBag.Location != null)
+                            {
+                                <option disabled selected>Select Location</option>
+                                foreach (var G in ViewBag.Location)
+                                {
+                                    <option value="@G">@G</option>
+                                }
+
+                            }
+
+                        </select>
+                    </div>
+
+                    <div class="input-field">
+                        <label asp-for="Clinc_Description">Description</label>
+                        <input asp-for="Clinc_Description" type="text" placeholder="Description about clinic" required>
+                    </div>
+                    <div class="input-field">
+                        <label asp-for="Days">Days</label>
+                        <select asp-for="Days" required>
+
+                            <option disabled selected>Select your working days</option>
+
+                            <option>Saturday-Monday-Wednesday</option>
+                            <option>Sunday-Tuesday-Thursday</option>
+                            <option>Sunday-Monday-Tuesday-Wednesday-Thursday</option>
+                            <option>Saturday-Sunday-Monday-Tuesday-Wednesday-Thursday</option>
+
+
+                            }
+
+                        </select>
+                    </div>
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="input-field">
+                    <button asp-action="AddClinic" asp-controller="Clinic" class="sumbit">
+                        <span class="btnText">Next</span>
+                    </button>
+                </div>
+
+
+            </div>
+
+        </div>
+    </form>
+</div>
+

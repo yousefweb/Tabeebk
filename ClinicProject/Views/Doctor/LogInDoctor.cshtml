@@ -1,0 +1,48 @@
+﻿@model ClinicProject.Models.DoctorLogIn
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/LoginRegister2_Layout/_Layout_Login.cshtml";
+}
+<title>Tabeebk Doctor | Login</title>
+
+    <section class="container forms">
+        <div class="form login">
+            <div class="form-content">
+                <header>Login</header>
+            <header><span style="color:#0171d3">Doctor</span></header>
+            <form asp-action="LoginPatient">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="field input-field">
+
+
+                        <input asp-for="Doctor_Email" placeholder="Email" class="input" class="control-label" />
+                        <span asp-validation-for="Doctor_Email" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="field input-field">
+
+                        <input asp-for="Doctor_Password" placeholder="Password" class="password" class="control-label" />
+                        <span asp-validation-for="Doctor_Password" class="text-danger"></span>
+                        <i class='bx bx-hide eye-icon'></i>
+
+                    </div>
+
+                    
+
+                    <div class="field button-field">
+                        <button type="submit" vlaue="login" class="btn btn-primary" asp-action="LogInDoctor" asp-controller="Doctor">Login</button>
+                    </div>
+                </form>
+
+                <div class="form-link">
+                <span>Don't have an account? <a asp-action="RegisterDoctor" class="link signup-link">Signup</a></span>
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+

@@ -1,0 +1,235 @@
+﻿@model ClinicProject.Models.Patient
+@{
+    ViewData["Title"] = "EditProfileP";
+    Layout = "~/Views/Shared/PatientProfile_Layout/_Layout_PatientProfile.cshtml";
+}
+
+<div class="main-content">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+        <div class="container-fluid">
+
+            <!-- Form -->
+            <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+                <div class="form-group mb-0">
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+            <!-- User -->
+            <ul class="navbar-nav align-items-center d-none d-md-flex">
+                <li class="nav-item dropdown">
+
+                    @* <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                    <div class=" dropdown-header noti-title">
+                    <h6 class="text-overflow m-0">Welcome!</h6>
+                    </div>
+                    <a href="~/examples/profile.html" class="dropdown-item">
+                    <i class="ni ni-single-02"></i>
+                    <span>My profile</span>
+                    </a>
+                    <a href="~/examples/profile.html" class="dropdown-item">
+                    <i class="ni ni-settings-gear-65"></i>
+                    <span>Edit Profile</span>
+                    </a>
+                    <a href="~/examples/profile.html" class="dropdown-item">
+                    <i class="ni ni-calendar-grid-58"></i>
+                    <span>Activity</span>
+                    </a>
+                    <a href="~/examples/profile.html" class="dropdown-item">
+                    <i class="ni ni-support-16"></i>
+                    <span>Support</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#!" class="dropdown-item">
+                    <i class="ni ni-user-run"></i>
+                    <span>Logout</span>
+                    </a>
+                    </div>*@
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Page content -->
+    <div class="container-fluid mt--7" style="margin-top: 200px;">
+        <div class="row">
+            <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+                <div class="card card-profile shadow">
+                    <div class="card-body pt-0 pt-md-4">
+                        <div class="row">
+                            <div class="col">
+                                <div style="width: 100%; text-align: center;">
+                                    <h1><span style="color:brown; font-weight:bolder"> << Top five doctors >> </span></h1>
+                                </div>
+
+                                <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                                    <div>
+                                        <span class="heading">22</span>
+                                        <span class="description">Friends</span>
+                                    </div>
+                                    <div>
+                                        <span class="heading">10</span>
+                                        <span class="description">Photos</span>
+                                    </div>
+                                    <div>
+                                        <span class="heading">89</span>
+                                        <span class="description">Comments</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h3>
+                                Jessica Jones<span class="font-weight-light">, 27</span>
+                            </h3>
+                            <div class="h5 font-weight-300">
+                                <i class="ni location_pin mr-2"></i>Bucharest, Romania
+                            </div>
+                            <div class="h5 mt-4">
+                                <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+                            </div>
+                            <div>
+                                <i class="ni education_hat mr-2"></i>University of Computer Science
+                            </div>
+                            <hr class="my-4">
+                            <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
+                            <a href="#">Show more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 order-xl-1">
+                <div class="card bg-secondary shadow">
+                    <div class="card-header bg-white border-0">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h3 class="mb-0">My account</h3>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card-body">
+                        <form asp-action="EditProfileP" method="post">
+                            @Html.HiddenFor(x=>x.PatientId)
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <h6 class="heading-small text-muted mb-4">User information</h6>
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Patient_UserName" class="control-label"></label>
+                                            <input asp-for="Patient_UserName" class="form-control" value="@Model.Patient_UserName" readonly />
+                                            <span asp-validation-for="Patient_UserName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Patient_Email" class="control-label"></label>
+                                            <input asp-for="Patient_Email" class="form-control" value="@Model.Patient_Email" readonly />
+                                            <span asp-validation-for="Patient_Email" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Patient_FirstName" class="control-label"></label>
+                                            <input asp-for="Patient_FirstName" class="form-control" value="@Model.Patient_FirstName" />
+                                            <span asp-validation-for="Patient_FirstName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Patient_LastName" class="control-label"></label>
+                                            <input asp-for="Patient_LastName" class="form-control" value="@Model.Patient_LastName" />
+                                            <span asp-validation-for="Patient_LastName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Patient_Age" class="control-label"></label>
+                                            <input asp-for="Patient_Age" class="form-control" value="@Model.Patient_Age" />
+                                            <span asp-validation-for="Patient_Age" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Patient_PhoneNumber" class="control-label"></label>
+                                            <input asp-for="Patient_PhoneNumber" class="form-control" value="@Model.Patient_PhoneNumber" />
+                                            <span asp-validation-for="Patient_PhoneNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="place-content:center">
+                                    <div class="col-lg-3">
+                                        <div class="form-group text-center">
+                                            <label asp-for="Patient_Gender" class="control-label"></label>
+                                            <input asp-for="Patient_Gender" class="form-control" value="@Model.Patient_Gender" readonly />
+                                            <span asp-validation-for="Patient_Gender" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <hr class="my-4">
+                            <!-- Location -->
+                            <h6 class="heading-small text-muted mb-4">Location Information</h6>
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Patient_Location" class="control-label">Location</label>
+                                            <select asp-for="Patient_Location" class="form-control" required>
+                                                @if (ViewBag.locationState != null)
+                                                {
+                                                    <option disabled selected>Select your location</option>
+                                                    foreach (var G in ViewBag.locationState)
+                                                    {
+                                                        <option value="@G">@G</option>
+                                                    }
+
+                                                }
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6" style="float:right">
+                                        <div class="form-group focused" style="float: right;">
+                                            <label class="form-control-label" for="input-country">Country</label>
+                                            <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="Jordan" readonly>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+                            <!-- Description -->
+                            <h6 class="heading-small text-muted mb-4">About me</h6>
+                            <div class="col-lg-10 aa-contact-area">
+                                <div class="form-group text-left">
+                                    <label asp-for="Patient_Aboutme" class="control-label"></label>
+                                    <input asp-for="Patient_Aboutme" type="text" class=" form-control" value="@Model.Patient_Aboutme" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12 text-right" style="padding-top:25px;">
+                                <input type="submit" value="save" class="btn btn-info" style="margin-right:250px;" />
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

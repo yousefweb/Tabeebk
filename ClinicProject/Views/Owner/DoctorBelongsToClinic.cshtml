@@ -1,0 +1,63 @@
+﻿@model ClinicProject.Models.Doctor
+
+@{
+    ViewData["Title"] = "DoctorBelongsToClinic";
+    Layout = "~/Views/Shared/_Layout_Owner.cshtml";
+}
+
+<h2>DoctorBelongsToClinic</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      
+
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Doctor_FirstName)</td>
+                <td>@Html.DisplayFor(model => model.Doctor_FirstName)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Doctor_LastName)</td>
+                <td>@Html.DisplayFor(model => model.Doctor_LastName)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Doctor_UserName)</td>
+                <td>@Html.DisplayFor(model => model.Doctor_UserName)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Doctor_Email)</td>
+                <td>@Html.DisplayFor(model => model.Doctor_Email)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Doctor_PhoneNumber)</td>
+                <td>@Html.DisplayFor(model => model.Doctor_PhoneNumber)</td>
+            </tr>
+ 
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Doctor_Age)</td>
+                <td>@Html.DisplayFor(model => model.Doctor_Age)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Doctor_RegisterTime)</td>
+                <td>@Html.DisplayFor(model => model.Doctor_RegisterTime)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Doctor_Gender)</td>
+                <td>@Html.DisplayFor(model => model.Doctor_Gender)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Doctor_YearsOfExperience)</td>
+                <td>@Html.DisplayFor(model => model.Doctor_YearsOfExperience)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Doctor_Specialization)</td>
+                <td>@Html.DisplayFor(model => model.Doctor_Specialization)</td>
+            </tr>
+
+       
+
+        </tbody>
+    </table>
+    <a asp-action="AllClinics" class="btn btn-outline-dark">Back</a>
+</div>
+

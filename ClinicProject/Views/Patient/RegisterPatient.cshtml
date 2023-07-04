@@ -1,0 +1,105 @@
+@model ClinicProject.Models.Patient
+
+@{
+    ViewData["Title"] = "RegisterPatient";
+    Layout = "~/Views/Shared/LoginRegister2_Layout/_Layout_Register.cshtml";
+}
+<title>Tabeebk Patient | Register</title>
+<div class="container">
+    <header>Registration Patient</header>
+
+    <form asp-action="RegisterPatient">
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Personal Details</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label asp-for="Patient_FirstName">First Name</label>
+                        <input asp-for="Patient_FirstName" type="text" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label asp-for="Patient_LastName">Last Name</label>
+                        <input asp-for="Patient_LastName" type="text" placeholder="Enter your last name" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label asp-for="Patient_UserName">Username</label>
+                        <input asp-for="Patient_UserName" type="text" placeholder="Enter your Username" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label asp-for="Patient_Email">Email</label>
+                        <input asp-for="Patient_Email" type="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-field">
+                        <label asp-for="Patient_PhoneNumber">Mobile Number</label>
+                        <input asp-for="Patient_PhoneNumber" type="number" placeholder="Enter mobile number" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label asp-for="Patient_Age">Age</label>
+                        <input asp-for="Patient_Age" type="number" placeholder="Enter your Age" required>
+                    </div>
+
+
+
+                    <div class="input-field">
+                        <label asp-for="Patient_Gender">Gender</label>
+                        <select asp-for="Patient_Gender" required>
+                            @if (ViewBag.gender != null)
+                            {
+                                <option disabled selected>Select gender</option>
+                                foreach (var G in ViewBag.gender)
+                                {
+                                    <option value="@G">@G</option>
+                                }
+
+                            }
+
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <label asp-for="Patient_Location">Location</label>
+                        <select asp-for="Patient_Location" required>
+                            @if (ViewBag.locationState != null)
+                            {
+                                <option disabled selected>Select your location</option>
+                                foreach (var G in ViewBag.locationState)
+                                {
+                                    <option value="@G">@G</option>
+                                }
+
+                            }
+
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <label asp-for="Patient_Password">Password</label>
+                        <input asp-for="Patient_Password" type="password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="input-field">
+                        <label asp-for="Patient_ConfirmPassword">Confirm Password</label>
+                        <input asp-for="Patient_ConfirmPassword" type="password" placeholder="Re enter your password" required>
+                    </div>
+                    <div class="input-field">
+                        <label asp-for="Patient_Aboutme">Aboutme</label>
+                        <input asp-for="Patient_Aboutme" type="text" placeholder="Talk about yourself...">
+                    </div>
+
+                </div>
+                <button asp-action="RegisterPatient" class="sumbit">
+                    <span class="btnText">Submit</span>
+                    <i class="uil uil-navigator"></i>
+                </button>
+            </div>
+
+
+        </div>
+
+
+
+
+    </form>
+</div>

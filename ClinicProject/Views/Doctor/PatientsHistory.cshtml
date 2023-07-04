@@ -1,0 +1,34 @@
+﻿@model Dictionary<OldReservation, Patient>
+
+@{
+    ViewData["Title"] = "ReservationForPatient";
+    Layout = "~/Views/Shared/Doctor_Layout/_Layout_Doctor.cshtml";
+}
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Patient Name</th>
+            <th>Patient Location</th>
+            <th>Patient Age</th>
+            <th>Day</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Specialization</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Value.Patient_FirstName @item.Value.Patient_LastName</td>
+                <td>@item.Value.Patient_Location</td>
+                <td>@item.Value.Patient_Age</td>
+                <td>@item.Key.OldReservation_Day</td>
+                <td>@item.Key.Strat_Oldreservation</td>
+                <td>@item.Key.End_Oldreservation</td>
+                <td>@item.Key.OldReservation_Specialization</td>
+            </tr>
+        }
+    </tbody>
+</table>
